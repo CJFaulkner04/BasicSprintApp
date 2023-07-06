@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Book</title>
+  <style>
+    body{
+      background-color: lightpink;
+    }
+    h1{
+      text-align: center;
+    }
+    .container{
+      width: 40%;
+      margin: auto;
+      display: flex;
+      justify-content: space-around;
+    }
+    button{
+      width:75px;
+      height: 75px;
+      border: 2px solid darkred;
+      border-radius: 12px;
+    }
+
+  </style>
+</head>
+<body>
+<h1>Update Book</h1>
+<div class="container">
+  <form th:action="@{/books/{id}/edit(id=${book.id})}" th:object="${book}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <label>Title: <input type="text" th:field="*{title}" /></label></br>
+    <label>Author: <input type="text" th:field="*{author.name}" /></label></br>
+    <input type="submit" value="Update" />
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Author List</title>
+  <style>
+    body{
+      background-color: lightpink;
+    }
+    h1{
+      text-align: center;
+    }
+    .container{
+      width: 40%;
+      margin: auto;
+      display: flex;
+      justify-content: space-around;
+    }
+    button{
+      width:75px;
+      height: 75px;
+      border: 2px solid darkred;
+      border-radius: 12px;
+    }
+
+  </style>
+</head>
+<body>
+<h1>Author List</h1>
+<div class="container">
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="author : ${authors}">
+      <td th:text="${author.getId()}"></td>
+      <td th:text="${author.getName()}"></td>
+      <td>
+        <a th:href="@{/authors/edit/{id}(id=${author.getId()})}">Edit</a>
+        <a th:href="@{/authors/delete/{id}(id=${author.getId()})}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<div class="container">
+  <button type="submit" onclick="location.href='/authors/add'">Add Author</button>
+  <button type="submit" onclick="location.href='/'">Home</button>
+</div>
+
+</body>
+</html>

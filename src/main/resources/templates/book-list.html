@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book List</title>
+  <style>
+    body{
+      background-color: lightpink;
+    }
+    h1{
+      text-align: center;
+    }
+    .container{
+      width: 40%;
+      margin: auto;
+      display: flex;
+      justify-content: space-around;
+    }
+    button{
+      width:75px;
+      height: 75px;
+      border: 2px solid darkred;
+      border-radius: 12px;
+    }
+
+  </style>
+</head>
+<body>
+<h1>Book List</h1>
+<div class="container">
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+      <td th:text="${book.id}"></td>
+      <td th:text="${book.title}"></td>
+      <td th:text="${book.author.name}"></td>
+      <td>
+        <a th:href="@{/books/{id}/edit(id=${book.id})}">Edit</a>
+        <a th:href="@{/books/{id}/delete(id=${book.id})}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<br>
+<div class="container">
+  <button type="submit" onclick="location.href='/books/add'">Add Book</button>
+  <button type="submit" onclick="location.href='/'">Home</button>
+</div>
+
+</body>
+</html>

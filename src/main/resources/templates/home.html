@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <style>
+    body{
+      background-color: lightpink;
+    }
+    h1{
+      text-align: center;
+    }
+    .container{
+      width: 40%;
+      margin: auto;
+      display: flex;
+      justify-content: space-around;
+    }
+    button{
+      width:75px;
+      height: 75px;
+      border: 2px solid darkred;
+      border-radius: 12px;
+    }
+
+  </style>
+</head>
+<body>
+<h1>Select Options Below</h1>
+<p th:text="${message}"></p>
+<br><br>
+<div class="container">
+  <form action="/authors" method="get">
+    <button type="submit" onclick="location.href='/authors'">Add Authors</button>
+  </form>
+  <br><br>
+  <form action="/books" method="get">
+    <button type="submit" class="btn btn-primary">Add Books</button>
+  </form>
+</div>
+
+</body>
+</html>
